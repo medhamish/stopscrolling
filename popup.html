@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stop Scrolling</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="popup">
+
+    <header class="hero">
+      <h1>Stop scrolling.</h1>
+      <p class="subtitle">Make room for what matters.</p>
+    </header>
+
+    <!-- Add a website -->
+    <section class="card" aria-labelledby="add-label">
+      <form id="add-form" novalidate>
+        <label id="add-label" class="field-label" for="site-input">Block a website</label>
+        <div class="input-row">
+          <input
+            id="site-input"
+            type="text"
+            inputmode="url"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="instagram.com or paste a link"
+            aria-describedby="message">
+          <button id="add-btn" class="btn-primary" type="submit">Block</button>
+        </div>
+      </form>
+
+      <!-- Confirmation / error messages appear here -->
+      <p id="message" class="message" role="status" aria-live="polite" hidden></p>
+
+      <div id="quick-section" class="quick" hidden>
+        <p class="quick-label">Quick picks</p>
+        <div id="quick-picks" class="chips"></div>
+      </div>
+    </section>
+
+    <!-- The blocklist -->
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-head">
+        <h2 id="list-title">Blocked sites</h2>
+        <span id="count" class="count" aria-label="0 blocked sites">0</span>
+      </div>
+
+      <ul id="site-list" class="site-list"></ul>
+
+      <div id="empty-state" class="empty" hidden>
+        <div class="empty-dot" aria-hidden="true"></div>
+        <p class="empty-title">Nothing blocked yet</p>
+        <p class="empty-text">Add a site above, or start with a quick pick.</p>
+      </div>
+    </section>
+
+    <p class="foot">Blocking a site also blocks its subdomains.</p>
+    <p id="preview-note" class="foot preview-note" hidden>Preview mode: sites are saved in this browser tab only and aren't actually blocked. Install the extension to block sites.</p>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* blocked.css — same lavender + purple palette as the popup */
+
+:root {
+  --lavender: #ece5fb;
+  --lavender-deep: #ddd1f6;
+  --purple: #5b3fd0;
+  --purple-dark: #4529b3;
+  --ink: #241b3d;
+  --muted: #74698f;
+  --font: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--lavender);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.45;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 520px;
+  padding: 44px 32px 40px;
+  border-radius: 32px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(91, 63, 208, 0.12);
+}
+
+/* A slow "breathing" circle. The one gentle moment on the page. */
+.breathe {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lavender);
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.breathe span {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.85); }
+  50%      { transform: scale(1.1); }
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(36px, 9vw, 52px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--purple);
+}
+
+.message {
+  max-width: 34ch;
+  margin: 14px auto 0;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.site {
+  margin: 22px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.domain {
+  display: inline-block;
+  max-width: 100%;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--lavender-deep);
+  color: var(--purple-dark);
+  font-weight: 700;
+  overflow-wrap: anywhere; /* long domains wrap instead of overflowing */
+}
+
+.btn {
+  margin-top: 28px;
+  height: 48px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--purple);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn:hover { background: var(--purple-dark); }
+
+.btn:focus-visible {
+  outline: 3px solid rgba(91, 63, 208, 0.45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .wrap { padding: 36px 20px 32px; }
+  .message { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breathe { animation: none; }
+  .btn { transition: none; }
+}
